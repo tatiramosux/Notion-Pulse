@@ -2,102 +2,161 @@ import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks';
 
 <Meta title="CarBrain / Design Tokens / Colors" />
 
-# Color Tokens
+# Color System
 
-CarBrain usa um sistema de **duas cores de acento** sobre fundo navy profundo. Todas as cores são CSS variables consumidas pelo Tailwind CSS 4.
+CarBrain usa **três cores de marca** com escala tonal de 0 a 100. Cada cor começa em branco puro (0) e termina na cor base saturada (100), interpolada linearmente em RGB.
+
+As escalas são expostas como CSS variables (`--color-cb-navy-50`) e disponíveis como classes Tailwind (`bg-cb-navy-50`, `text-cb-cyan-30`, `border-cb-lime-70`).
 
 ---
 
-## Paleta principal
+## Navy — `#071C3A`
+
+Superfície base de toda a UI. Fundos de página, texto sobre cards brancos, botões outline.
 
 <ColorPalette>
-  <ColorItem
-    title="Background — Navy"
-    subtitle="--background · #071C3A · Superfície base de toda UI"
-    colors={{ 'Navy Base': '#071C3A', 'Navy Light': '#0D2850' }}
-  />
-  <ColorItem
-    title="Primary — Neon Lime"
-    subtitle="--primary · #C8FF00 · CTAs, botões principais, progress bar"
-    colors={{ 'Lime': '#C8FF00' }}
-  />
-  <ColorItem
-    title="Secondary — Electric Cyan"
-    subtitle="--secondary · #00C8FF · Headings, links, botão Back, step labels"
-    colors={{ 'Cyan': '#00C8FF' }}
-  />
-  <ColorItem
-    title="Light Blue Section"
-    subtitle="--color-cb-light-blue · #CCF0FF · Seções de features (How it Works)"
-    colors={{ 'Light Blue': '#CCF0FF' }}
-  />
+  <ColorItem title="cb-navy" subtitle="0 → 100 · white to #071C3A" colors={{
+    '0':   '#FFFFFF',
+    '10':  '#E6E8EB',
+    '20':  '#CDD1D7',
+    '30':  '#B4BAC3',
+    '40':  '#9BA3AF',
+    '50':  '#838D9C',
+    '60':  '#6A7688',
+    '70':  '#515F75',
+    '80':  '#384961',
+    '90':  '#1F324D',
+    '100': '#071C3A',
+  }} />
 </ColorPalette>
 
+**Tokens semânticos usando a escala Navy:**
+
+| Token | Valor | Uso |
+|---|---|---|
+| `--background` | `navy-100` `#071C3A` | Fundo de página |
+| `--muted` | `#0D2850` | Superfícies secundárias |
+| `--muted-foreground` | `navy-50` `#838D9C` ≈ | Texto auxiliar, placeholders |
+| `--card-foreground` | `navy-100` | Texto sobre cards brancos |
+
 ---
 
-## Superfícies
+## Cyan — `#00C8FF`
+
+Cor de destaque para headings, links, step labels e botão Back.
 
 <ColorPalette>
-  <ColorItem
-    title="Card"
-    subtitle="--card · #FFFFFF · Cards brancos flutuando sobre o navy"
-    colors={{ 'Card White': '#FFFFFF', 'Card Text': '#071C3A' }}
-  />
-  <ColorItem
-    title="Muted"
-    subtitle="--muted · #0D2850 · Superfícies secundárias, popovers, sidebar"
-    colors={{ 'Muted': '#0D2850', 'Muted Foreground': '#7FA5CC' }}
-  />
-  <ColorItem
-    title="Border / Input"
-    subtitle="--border · rgba(255,255,255,0.15) · Bordas sutis em superfícies navy"
-    colors={{ 'Border on Dark': 'rgba(255,255,255,0.15)', 'Input on Card': 'rgba(7,28,58,0.15)' }}
-  />
+  <ColorItem title="cb-cyan" subtitle="0 → 100 · white to #00C8FF" colors={{
+    '0':   '#FFFFFF',
+    '10':  '#E6FCFF',
+    '20':  '#CCF8FF',
+    '30':  '#B3F4FF',
+    '40':  '#99F0FF',
+    '50':  '#80ECFF',
+    '60':  '#66E8FF',
+    '70':  '#4DE4FF',
+    '80':  '#33E0FF',
+    '90':  '#1ADCFF',
+    '100': '#00C8FF',
+  }} />
 </ColorPalette>
 
+**Tokens semânticos usando a escala Cyan:**
+
+| Token | Valor | Uso |
+|---|---|---|
+| `--secondary` | `cyan-100` `#00C8FF` | Botão Back, step labels |
+| `--accent` | `cyan-100` `#00C8FF` | Estados de hover |
+| `--ring` | `cyan-100` `#00C8FF` | Focus ring em inputs |
+| Light section bg | `cyan-10` `#E6FCFF` ≈ | Seções "How it Works" |
+
 ---
 
-## Status & Feedback
+## Lime — `#C8FF00`
+
+Cor primária de ação. Todos os CTAs, progress bar, badges de confirmação.
 
 <ColorPalette>
-  <ColorItem
-    title="Destructive"
-    subtitle="--destructive · #EF4444 · Erros, ações irreversíveis"
-    colors={{ 'Destructive': '#EF4444' }}
-  />
-  <ColorItem
-    title="Success (via lime)"
-    subtitle="Confirmações, ofertas aceitas — usa --primary lime"
-    colors={{ 'Success': '#C8FF00' }}
-  />
+  <ColorItem title="cb-lime" subtitle="0 → 100 · white to #C8FF00" colors={{
+    '0':   '#FFFFFF',
+    '10':  '#FAFFE6',
+    '20':  '#F4FFCC',
+    '30':  '#EEFFB3',
+    '40':  '#E9FF99',
+    '50':  '#E4FF80',
+    '60':  '#DEFF66',
+    '70':  '#D8FF4D',
+    '80':  '#D3FF33',
+    '90':  '#CDFF1A',
+    '100': '#C8FF00',
+  }} />
 </ColorPalette>
 
+**Tokens semânticos usando a escala Lime:**
+
+| Token | Valor | Uso |
+|---|---|---|
+| `--primary` | `lime-100` `#C8FF00` | CTA principal "Get an Offer Now" |
+| Progress fill | `lime-100` `#C8FF00` | Barra de progresso dos steps |
+| Hover state | `lime-90` `#CDFF1A` | Hover do botão primário |
+| Disabled state | `lime-40` `#E9FF99` | Botão primário desabilitado |
+
 ---
 
-## Charts
+## Campos (Input fields)
+
+Todos os inputs são **sempre brancos** — `#FFFFFF` — independente da superfície.
+
+| Estado | Background | Texto | Borda | Placeholder |
+|---|---|---|---|---|
+| Default | `#FFFFFF` | `navy-100` | `rgba(7,28,58,0.2)` | `navy-40` |
+| Focus | `#FFFFFF` | `navy-100` | `cyan-100` (ring) | — |
+| Disabled | `#FFFFFF` at 50% | `navy-40` | — | — |
+
+---
+
+## Superfícies e status
 
 <ColorPalette>
   <ColorItem
-    title="Chart Palette"
-    subtitle="Paleta para gráficos e visualizações de dados"
+    title="Superfícies"
+    subtitle="Fundos de página, cards e popovers"
     colors={{
-      'Chart 1 (Lime)': '#C8FF00',
-      'Chart 2 (Cyan)': '#00C8FF',
-      'Chart 3 (Light Blue)': '#CCF0FF',
-      'Chart 4 (Navy Light)': '#0D2850',
-      'Chart 5 (Navy Dark)': '#071C3A',
+      'Background (navy-100)': '#071C3A',
+      'Muted (navy-light)':    '#0D2850',
+      'Card / Field':          '#FFFFFF',
+      'Light section':         '#CCF8FF',
+    }}
+  />
+  <ColorItem
+    title="Status"
+    subtitle="Feedback de sistema"
+    colors={{
+      'Success (lime-100)':    '#C8FF00',
+      'Info (cyan-100)':       '#00C8FF',
+      'Destructive':           '#EF4444',
+      'Warning':               '#F59E0B',
     }}
   />
 </ColorPalette>
 
 ---
 
-## Regras de uso
+## Regras de uso da escala
 
-| Cor | Onde usar | Onde NÃO usar |
-|---|---|---|
-| **Lime `#C8FF00`** | Botão CTA principal, progress bar, preços | Texto corrido, ícones decorativos |
-| **Cyan `#00C8FF`** | Headings, links, botão Back, step indicators | Fundos de página inteiros |
-| **Navy `#071C3A`** | Fundo de página, texto em cards brancos | Texto sobre navy (sem contraste) |
-| **Branco `#FFFFFF`** | Cards, texto sobre navy, forms | Fundo de página (não é dark-first) |
-| **Light Blue `#CCF0FF`** | Seções de features (marketing), email | UI interativa, forms |
+```
+cb-navy  0–30  → tints claros para fundos de seção light
+cb-navy  40–60 → texto auxiliar, ícones secundários
+cb-navy  70–90 → texto em superfícies claras
+cb-navy  100   → fundo de página (--background)
+
+cb-cyan  0–30  → backgrounds de destaque muito sutil
+cb-cyan  40–70 → hover states, destaques suaves
+cb-cyan  80–90 → links interativos
+cb-cyan  100   → headings, step labels, botão Back (--secondary)
+
+cb-lime  0–30  → feedback de sucesso muito sutil
+cb-lime  40–70 → hover/active states do botão CTA
+cb-lime  80–90 → estados intermediários
+cb-lime  100   → CTA principal, progress bar (--primary)
+```
