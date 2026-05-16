@@ -4,6 +4,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   @theme inline — exposes CSS custom properties as Tailwind utility classes.
+   Values resolve at runtime via var() from the :root blocks below.
+───────────────────────────────────────────────────────────────────────────── */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -47,146 +51,510 @@
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
 
-  /* ─── CarBrain Navy scale: 0 (white) → 100 (#071C3A) ─── */
-  --color-cb-navy-0:   #FFFFFF;
-  --color-cb-navy-10:  #E6E8EB;
-  --color-cb-navy-20:  #CDD1D7;
-  --color-cb-navy-30:  #B4BAC3;
-  --color-cb-navy-40:  #9BA3AF;
-  --color-cb-navy-50:  #838D9C;
-  --color-cb-navy-60:  #6A7688;
-  --color-cb-navy-70:  #515F75;
-  --color-cb-navy-80:  #384961;
-  --color-cb-navy-90:  #1F324D;
-  --color-cb-navy-100: #071C3A;
+  /* ─── Brand ramp (bg-cb-brand-*, text-cb-brand-*) ─── */
+  --color-cb-brand-50:  var(--cb-color-brand-50);
+  --color-cb-brand-100: var(--cb-color-brand-100);
+  --color-cb-brand-200: var(--cb-color-brand-200);
+  --color-cb-brand-300: var(--cb-color-brand-300);
+  --color-cb-brand-400: var(--cb-color-brand-400);
+  --color-cb-brand-500: var(--cb-color-brand-500);
+  --color-cb-brand-600: var(--cb-color-brand-600);
+  --color-cb-brand-700: var(--cb-color-brand-700);
+  --color-cb-brand-800: var(--cb-color-brand-800);
+  --color-cb-brand-900: var(--cb-color-brand-900);
+  --color-cb-brand-950: var(--cb-color-brand-950);
 
-  /* ─── CarBrain Cyan scale: 0 (white) → 100 (#00C8FF) ─── */
-  --color-cb-cyan-0:   #FFFFFF;
-  --color-cb-cyan-10:  #E6FCFF;
-  --color-cb-cyan-20:  #CCF8FF;
-  --color-cb-cyan-30:  #B3F4FF;
-  --color-cb-cyan-40:  #99F0FF;
-  --color-cb-cyan-50:  #80ECFF;
-  --color-cb-cyan-60:  #66E8FF;
-  --color-cb-cyan-70:  #4DE4FF;
-  --color-cb-cyan-80:  #33E0FF;
-  --color-cb-cyan-90:  #1ADCFF;
-  --color-cb-cyan-100: #00C8FF;
+  /* ─── Accent / Light Blue ramp ─── */
+  --color-cb-accent-50:  var(--cb-color-accent-50);
+  --color-cb-accent-100: var(--cb-color-accent-100);
+  --color-cb-accent-200: var(--cb-color-accent-200);
+  --color-cb-accent-300: var(--cb-color-accent-300);
+  --color-cb-accent-400: var(--cb-color-accent-400);
+  --color-cb-accent-500: var(--cb-color-accent-500);
+  --color-cb-accent-600: var(--cb-color-accent-600);
+  --color-cb-accent-700: var(--cb-color-accent-700);
+  --color-cb-accent-800: var(--cb-color-accent-800);
+  --color-cb-accent-900: var(--cb-color-accent-900);
+  --color-cb-accent-950: var(--cb-color-accent-950);
 
-  /* ─── CarBrain Lime scale: 0 (white) → 100 (#C8FF00) ─── */
-  --color-cb-lime-0:   #FFFFFF;
-  --color-cb-lime-10:  #FAFFE6;
-  --color-cb-lime-20:  #F4FFCC;
-  --color-cb-lime-30:  #EEFFB3;
-  --color-cb-lime-40:  #E9FF99;
-  --color-cb-lime-50:  #E4FF80;
-  --color-cb-lime-60:  #DEFF66;
-  --color-cb-lime-70:  #D8FF4D;
-  --color-cb-lime-80:  #D3FF33;
-  --color-cb-lime-90:  #CDFF1A;
-  --color-cb-lime-100: #C8FF00;
+  /* ─── Lime ramp ─── */
+  --color-cb-lime-50:  var(--cb-color-lime-50);
+  --color-cb-lime-100: var(--cb-color-lime-100);
+  --color-cb-lime-200: var(--cb-color-lime-200);
+  --color-cb-lime-300: var(--cb-color-lime-300);
+  --color-cb-lime-400: var(--cb-color-lime-400);
+  --color-cb-lime-500: var(--cb-color-lime-500);
+  --color-cb-lime-600: var(--cb-color-lime-600);
+  --color-cb-lime-700: var(--cb-color-lime-700);
+  --color-cb-lime-800: var(--cb-color-lime-800);
+  --color-cb-lime-900: var(--cb-color-lime-900);
+  --color-cb-lime-950: var(--cb-color-lime-950);
+
+  /* ─── Neutral ramp ─── */
+  --color-cb-neutral-0:   var(--cb-color-neutral-0);
+  --color-cb-neutral-50:  var(--cb-color-neutral-50);
+  --color-cb-neutral-100: var(--cb-color-neutral-100);
+  --color-cb-neutral-200: var(--cb-color-neutral-200);
+  --color-cb-neutral-300: var(--cb-color-neutral-300);
+  --color-cb-neutral-400: var(--cb-color-neutral-400);
+  --color-cb-neutral-500: var(--cb-color-neutral-500);
+  --color-cb-neutral-600: var(--cb-color-neutral-600);
+  --color-cb-neutral-700: var(--cb-color-neutral-700);
+  --color-cb-neutral-800: var(--cb-color-neutral-800);
+  --color-cb-neutral-900: var(--cb-color-neutral-900);
+  --color-cb-neutral-950: var(--cb-color-neutral-950);
+
+  /* ─── Status ─── */
+  --color-cb-success-500: var(--cb-color-success-500);
+  --color-cb-warning-500: var(--cb-color-warning-500);
+  --color-cb-danger-500:  var(--cb-color-danger-500);
+  --color-cb-info-500:    var(--cb-color-info-500);
+
+  /* ─── Backward-compat aliases — old cb-navy/cyan/lime stories still compile ─── */
+  --color-cb-navy-0:   var(--cb-color-neutral-0);
+  --color-cb-navy-10:  var(--cb-color-neutral-100);
+  --color-cb-navy-20:  var(--cb-color-neutral-200);
+  --color-cb-navy-30:  var(--cb-color-neutral-300);
+  --color-cb-navy-40:  var(--cb-color-neutral-400);
+  --color-cb-navy-50:  var(--cb-color-neutral-500);
+  --color-cb-navy-60:  var(--cb-color-neutral-600);
+  --color-cb-navy-70:  var(--cb-color-neutral-700);
+  --color-cb-navy-80:  var(--cb-color-brand-700);
+  --color-cb-navy-90:  var(--cb-color-brand-600);
+  --color-cb-navy-100: var(--cb-color-brand-500);
+
+  --color-cb-cyan-0:   var(--cb-color-accent-50);
+  --color-cb-cyan-10:  var(--cb-color-accent-100);
+  --color-cb-cyan-20:  var(--cb-color-accent-200);
+  --color-cb-cyan-30:  var(--cb-color-accent-300);
+  --color-cb-cyan-40:  var(--cb-color-accent-300);
+  --color-cb-cyan-50:  var(--cb-color-accent-400);
+  --color-cb-cyan-60:  var(--cb-color-accent-400);
+  --color-cb-cyan-70:  var(--cb-color-accent-400);
+  --color-cb-cyan-80:  var(--cb-color-accent-400);
+  --color-cb-cyan-90:  var(--cb-color-accent-400);
+  --color-cb-cyan-100: var(--cb-color-accent-500);
+
+  --color-cb-lime-0:   var(--cb-color-lime-50);
+  --color-cb-lime-10:  var(--cb-color-lime-50);
+  --color-cb-lime-20:  var(--cb-color-lime-50);
+  --color-cb-lime-30:  var(--cb-color-lime-100);
+  --color-cb-lime-40:  var(--cb-color-lime-200);
+  --color-cb-lime-50:  var(--cb-color-lime-300);
+  --color-cb-lime-60:  var(--cb-color-lime-400);
+  --color-cb-lime-70:  var(--cb-color-lime-400);
+  --color-cb-lime-80:  var(--cb-color-lime-400);
+  --color-cb-lime-90:  var(--cb-color-lime-400);
+  --color-cb-lime-100: var(--cb-color-lime-500);
 }
 
-/* ─── CarBrain Design Tokens ─── */
+/* ═══════════════════════════════════════════════════════════════════════════
+   1. PRIMITIVES — raw palette values, theme-agnostic
+   ═══════════════════════════════════════════════════════════════════════════ */
 :root {
-  /* Base — dark navy is the default surface */
-  --background: #071C3A;
-  --foreground: #FFFFFF;
+  /* Brand: Deep Blue */
+  --cb-color-brand-50:  #E6ECF3;
+  --cb-color-brand-100: #CCD9E7;
+  --cb-color-brand-200: #99B3CF;
+  --cb-color-brand-300: #DEEEFF;
+  --cb-color-brand-400: #2E5478;
+  --cb-color-brand-500: #002147;
+  --cb-color-brand-600: #001B3B;
+  --cb-color-brand-700: #00152E;
+  --cb-color-brand-800: #000F22;
+  --cb-color-brand-900: #000915;
+  --cb-color-brand-950: #00060E;
 
-  /* Cards float as white surfaces on the dark bg */
-  --card: #FFFFFF;
-  --card-foreground: #071C3A;
+  /* Accent: Light Blue */
+  --cb-color-accent-50:  #E6F8FD;
+  --cb-color-accent-100: #CCF1FB;
+  --cb-color-accent-200: #C1F4FF;
+  --cb-color-accent-300: #8EEBFF;
+  --cb-color-accent-400: #00C6EF;
+  --cb-color-accent-500: #00BBEA;
+  --cb-color-accent-600: #0096BB;
+  --cb-color-accent-700: #00708C;
+  --cb-color-accent-800: #004B5D;
+  --cb-color-accent-900: #00252E;
+  --cb-color-accent-950: #001217;
 
-  --popover: #0D2850;
-  --popover-foreground: #FFFFFF;
+  /* Lime */
+  --cb-color-lime-50:  #F9FFE0;
+  --cb-color-lime-100: #EEFFB3;
+  --cb-color-lime-200: #E0FF80;
+  --cb-color-lime-300: #D9FF4D;
+  --cb-color-lime-400: #D2FF26;
+  --cb-color-lime-500: #CBFF00;
+  --cb-color-lime-600: #A2CC00;
+  --cb-color-lime-700: #7A9900;
+  --cb-color-lime-800: #516600;
+  --cb-color-lime-900: #293300;
+  --cb-color-lime-950: #141A00;
 
-  /* Primary = neon lime — all main CTAs */
-  --primary: #C8FF00;
-  --primary-foreground: #071C3A;
+  /* Neutral */
+  --cb-color-neutral-0:   #FFFFFF;
+  --cb-color-neutral-50:  #F7F8FA;
+  --cb-color-neutral-100: #EEF1F5;
+  --cb-color-neutral-200: #DDE3EB;
+  --cb-color-neutral-300: #C2CBD6;
+  --cb-color-neutral-400: #94A0AF;
+  --cb-color-neutral-500: #6B7585;
+  --cb-color-neutral-600: #4A5566;
+  --cb-color-neutral-700: #333D4D;
+  --cb-color-neutral-800: #1E2939;
+  --cb-color-neutral-900: #141B26;
+  --cb-color-neutral-950: #0A0E14;
 
-  /* Secondary = electric cyan — headings, links, back buttons */
-  --secondary: #00C8FF;
-  --secondary-foreground: #071C3A;
+  /* Status */
+  --cb-color-success-300: #66D18C;
+  --cb-color-success-500: #00A640;
+  --cb-color-success-700: #006426;
+  --cb-color-success-800: #00421A;
+  --cb-color-warning-300: #FFCF66;
+  --cb-color-warning-500: #E69900;
+  --cb-color-warning-700: #8A5C00;
+  --cb-color-warning-800: #5C3D00;
+  --cb-color-danger-300:  #ED8282;
+  --cb-color-danger-400:  #E75959;
+  --cb-color-danger-500:  #D32F2F;
+  --cb-color-danger-600:  #A82626;
+  --cb-color-danger-700:  #7E1C1C;
+  --cb-color-info-300:    #66BCE7;
+  --cb-color-info-500:    #0084C7;
+  --cb-color-info-700:    #005077;
+  --cb-color-info-800:    #003550;
 
-  /* Muted = slightly lighter navy */
-  --muted: #0D2850;
-  --muted-foreground: #7FA5CC;
+  /* Gradients */
+  --cb-gradient-brand:            linear-gradient(135deg, #00BBEA 0%, #CBFF00 100%);
+  --cb-gradient-brand-horizontal: linear-gradient(90deg, #00BBEA 0%, #CBFF00 100%);
 
-  /* Accent = electric cyan */
-  --accent: #00C8FF;
-  --accent-foreground: #071C3A;
+  /* Spacing (4 px base) */
+  --cb-space-0:  0px;
+  --cb-space-1:  4px;
+  --cb-space-2:  8px;
+  --cb-space-3:  12px;
+  --cb-space-4:  16px;
+  --cb-space-5:  20px;
+  --cb-space-6:  24px;
+  --cb-space-8:  32px;
+  --cb-space-10: 40px;
+  --cb-space-12: 48px;
+  --cb-space-16: 64px;
+  --cb-space-20: 80px;
+  --cb-space-24: 96px;
+  --cb-space-32: 128px;
 
-  --destructive: #EF4444;
+  /* Radius */
+  --cb-radius-none: 0px;
+  --cb-radius-sm:   4px;
+  --cb-radius-md:   8px;
+  --cb-radius-lg:   12px;
+  --cb-radius-xl:   16px;
+  --cb-radius-2xl:  24px;
+  --cb-radius-full: 9999px;
 
-  /* Fields are always white */
-  --input-bg: #FFFFFF;
-  --input-fg: #071C3A;
-  --input-placeholder: #9BA3AF;
+  /* Motion */
+  --cb-duration-fast: 150ms;
+  --cb-duration-base: 250ms;
+  --cb-duration-slow: 400ms;
+  --cb-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --cb-easing-entrance: cubic-bezier(0, 0, 0.2, 1);
+  --cb-easing-exit:     cubic-bezier(0.4, 0, 1, 1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   2. SEMANTIC TOKENS — dark theme is the app default (dark-first brand)
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root,
+:root[data-theme="dark"] {
+  --cb-surface-canvas:    var(--cb-color-brand-500);
+  --cb-surface-primary:   var(--cb-color-brand-600);
+  --cb-surface-secondary: var(--cb-color-brand-700);
+  --cb-surface-tertiary:  var(--cb-color-neutral-800);
+  --cb-surface-elevated:  var(--cb-color-brand-600);
+  --cb-surface-inverse:   var(--cb-color-neutral-0);
+  --cb-surface-brand:     var(--cb-color-accent-500);
+
+  --cb-text-primary:   var(--cb-color-neutral-0);
+  --cb-text-secondary: var(--cb-color-neutral-200);
+  --cb-text-tertiary:  var(--cb-color-neutral-400);
+  --cb-text-inverse:   var(--cb-color-brand-500);
+  --cb-text-brand:     var(--cb-color-accent-500);
+  --cb-text-on-accent: var(--cb-color-brand-500);
+  --cb-text-success:   var(--cb-color-success-300);
+  --cb-text-warning:   var(--cb-color-warning-300);
+  --cb-text-danger:    var(--cb-color-danger-300);
+  --cb-text-info:      var(--cb-color-info-300);
+  --cb-text-disabled:  var(--cb-color-neutral-500);
+
+  --cb-border-subtle:  var(--cb-color-brand-700);
+  --cb-border-default: rgba(255, 255, 255, 0.15);
+  --cb-border-strong:  rgba(255, 255, 255, 0.30);
+  --cb-border-focus:   var(--cb-color-accent-400);
+  --cb-border-brand:   var(--cb-color-accent-500);
+  --cb-border-danger:  var(--cb-color-danger-400);
+
+  --cb-interactive-brand-default:  var(--cb-color-lime-500);
+  --cb-interactive-brand-hover:    var(--cb-gradient-brand);
+  --cb-interactive-brand-active:   var(--cb-color-accent-600);
+  --cb-interactive-brand-disabled: var(--cb-color-neutral-700);
+  --cb-interactive-brand-text:     var(--cb-color-brand-500);
+
+  --cb-interactive-secondary-default:  var(--cb-color-accent-500);
+  --cb-interactive-secondary-hover:    var(--cb-color-accent-400);
+  --cb-interactive-secondary-active:   var(--cb-color-accent-300);
+  --cb-interactive-secondary-disabled: var(--cb-color-neutral-700);
+  --cb-interactive-secondary-text:     var(--cb-color-brand-500);
+
+  --cb-interactive-ghost-hover:  rgba(255, 255, 255, 0.10);
+  --cb-interactive-ghost-active: rgba(255, 255, 255, 0.15);
+  --cb-interactive-ghost-text:   var(--cb-color-neutral-0);
+
+  --cb-interactive-danger-default: var(--cb-color-danger-500);
+  --cb-interactive-danger-hover:   var(--cb-color-danger-400);
+  --cb-interactive-danger-active:  var(--cb-color-danger-300);
+  --cb-interactive-danger-text:    var(--cb-color-neutral-0);
+
+  /* Semantic radius */
+  --cb-radius-control: var(--cb-radius-full);
+  --cb-radius-input:   var(--cb-radius-full);
+  --cb-radius-card:    var(--cb-radius-xl);
+  --cb-radius-surface: var(--cb-radius-2xl);
+  --cb-radius-pill:    var(--cb-radius-full);
+}
+
+/* ─── Light theme ─── */
+:root[data-theme="light"] {
+  --cb-surface-canvas:    var(--cb-color-neutral-0);
+  --cb-surface-primary:   var(--cb-color-neutral-0);
+  --cb-surface-secondary: var(--cb-color-accent-50);
+  --cb-surface-tertiary:  var(--cb-color-neutral-50);
+  --cb-surface-elevated:  var(--cb-color-neutral-0);
+  --cb-surface-inverse:   var(--cb-color-brand-500);
+  --cb-surface-brand:     var(--cb-color-brand-500);
+
+  --cb-text-primary:   var(--cb-color-brand-500);
+  --cb-text-secondary: var(--cb-color-neutral-700);
+  --cb-text-tertiary:  var(--cb-color-neutral-500);
+  --cb-text-inverse:   var(--cb-color-neutral-0);
+  --cb-text-brand:     var(--cb-color-accent-500);
+  --cb-text-on-accent: var(--cb-color-brand-500);
+  --cb-text-success:   var(--cb-color-success-700);
+  --cb-text-warning:   var(--cb-color-warning-700);
+  --cb-text-danger:    var(--cb-color-danger-600);
+  --cb-text-info:      var(--cb-color-info-700);
+  --cb-text-disabled:  var(--cb-color-neutral-400);
+
+  --cb-border-subtle:  var(--cb-color-neutral-100);
+  --cb-border-default: var(--cb-color-neutral-200);
+  --cb-border-strong:  var(--cb-color-neutral-400);
+  --cb-border-focus:   var(--cb-color-accent-500);
+  --cb-border-brand:   var(--cb-color-brand-500);
+  --cb-border-danger:  var(--cb-color-danger-500);
+
+  --cb-interactive-brand-default:  var(--cb-color-lime-500);
+  --cb-interactive-brand-hover:    var(--cb-gradient-brand);
+  --cb-interactive-brand-active:   var(--cb-color-accent-600);
+  --cb-interactive-brand-disabled: var(--cb-color-neutral-200);
+  --cb-interactive-brand-text:     var(--cb-color-brand-500);
+
+  --cb-interactive-secondary-default:  var(--cb-color-accent-500);
+  --cb-interactive-secondary-hover:    var(--cb-color-accent-600);
+  --cb-interactive-secondary-active:   var(--cb-color-accent-700);
+  --cb-interactive-secondary-disabled: var(--cb-color-neutral-200);
+  --cb-interactive-secondary-text:     var(--cb-color-neutral-0);
+
+  --cb-interactive-ghost-hover:  var(--cb-color-brand-50);
+  --cb-interactive-ghost-active: var(--cb-color-brand-100);
+  --cb-interactive-ghost-text:   var(--cb-color-brand-500);
+
+  --cb-interactive-danger-default: var(--cb-color-danger-500);
+  --cb-interactive-danger-hover:   var(--cb-color-danger-600);
+  --cb-interactive-danger-active:  var(--cb-color-danger-700);
+  --cb-interactive-danger-text:    var(--cb-color-neutral-0);
+}
+
+/* ─── High contrast theme ─── */
+:root[data-theme="hc"] {
+  --cb-surface-canvas:    var(--cb-color-neutral-0);
+  --cb-surface-primary:   var(--cb-color-neutral-0);
+  --cb-surface-secondary: var(--cb-color-neutral-50);
+  --cb-surface-tertiary:  var(--cb-color-neutral-100);
+  --cb-surface-elevated:  var(--cb-color-neutral-0);
+  --cb-surface-inverse:   var(--cb-color-neutral-950);
+  --cb-surface-brand:     var(--cb-color-neutral-950);
+
+  --cb-text-primary:   var(--cb-color-neutral-950);
+  --cb-text-secondary: var(--cb-color-neutral-900);
+  --cb-text-tertiary:  var(--cb-color-neutral-800);
+  --cb-text-inverse:   var(--cb-color-neutral-0);
+  --cb-text-brand:     var(--cb-color-brand-700);
+  --cb-text-on-accent: var(--cb-color-neutral-950);
+  --cb-text-success:   var(--cb-color-success-800);
+  --cb-text-warning:   var(--cb-color-warning-800);
+  --cb-text-danger:    var(--cb-color-danger-700);
+  --cb-text-info:      var(--cb-color-info-800);
+  --cb-text-disabled:  var(--cb-color-neutral-600);
+
+  --cb-border-subtle:  var(--cb-color-neutral-700);
+  --cb-border-default: var(--cb-color-neutral-900);
+  --cb-border-strong:  var(--cb-color-neutral-950);
+  --cb-border-focus:   var(--cb-color-neutral-950);
+  --cb-border-brand:   var(--cb-color-brand-700);
+  --cb-border-danger:  var(--cb-color-danger-700);
+
+  --cb-interactive-brand-default:  var(--cb-color-neutral-950);
+  --cb-interactive-brand-hover:    var(--cb-color-brand-700);
+  --cb-interactive-brand-active:   var(--cb-color-brand-600);
+  --cb-interactive-brand-disabled: var(--cb-color-neutral-300);
+  --cb-interactive-brand-text:     var(--cb-color-neutral-0);
+
+  --cb-interactive-secondary-default:  var(--cb-color-neutral-0);
+  --cb-interactive-secondary-hover:    var(--cb-color-neutral-100);
+  --cb-interactive-secondary-active:   var(--cb-color-neutral-200);
+  --cb-interactive-secondary-disabled: var(--cb-color-neutral-100);
+  --cb-interactive-secondary-text:     var(--cb-color-neutral-950);
+
+  --cb-interactive-ghost-hover:  var(--cb-color-neutral-100);
+  --cb-interactive-ghost-active: var(--cb-color-neutral-200);
+  --cb-interactive-ghost-text:   var(--cb-color-neutral-950);
+
+  --cb-interactive-danger-default: var(--cb-color-danger-700);
+  --cb-interactive-danger-hover:   var(--cb-color-danger-700);
+  --cb-interactive-danger-active:  var(--cb-color-danger-700);
+  --cb-interactive-danger-text:    var(--cb-color-neutral-0);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   3. COMPONENT TOKENS
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root {
+  /* Button sizes */
+  --cb-button-sm-padding-x:  var(--cb-space-4);
+  --cb-button-sm-padding-y:  var(--cb-space-2);
+  --cb-button-sm-font-size:  14px;
+  --cb-button-sm-min-height: 36px;
+
+  --cb-button-md-padding-x:  var(--cb-space-6);
+  --cb-button-md-padding-y:  var(--cb-space-3);
+  --cb-button-md-font-size:  16px;
+  --cb-button-md-min-height: 44px;
+
+  --cb-button-lg-padding-x:  var(--cb-space-8);
+  --cb-button-lg-padding-y:  var(--cb-space-4);
+  --cb-button-lg-font-size:  18px;
+  --cb-button-lg-min-height: 56px;
+
+  /* Input */
+  --cb-input-padding-x:  var(--cb-space-5);
+  --cb-input-padding-y:  var(--cb-space-3);
+  --cb-input-font-size:  16px;
+  --cb-input-min-height: 56px;
+
+  /* Card */
+  --cb-card-padding: var(--cb-space-6);
+
+  /* Wizard */
+  --cb-wizard-container-max-width:  768px;
+  --cb-wizard-step-size:            40px;
+  --cb-wizard-step-size-active:     48px;
+  --cb-wizard-connector-thickness:  2px;
+  --cb-wizard-progress-height:      6px;
+
+  /* Banner */
+  --cb-banner-hero-min-height:  640px;
+  --cb-banner-cta-padding:      var(--cb-space-16);
+
+  /* Section */
+  --cb-section-max-width: 1200px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   4. SHADCN COMPAT — semantic tokens used by shadcn/ui primitives
+   ═══════════════════════════════════════════════════════════════════════════ */
+:root {
+  /* Dark-first: deep brand navy as the default surface */
+  --background: var(--cb-color-brand-500);
+  --foreground: var(--cb-color-neutral-0);
+
+  --card:            var(--cb-color-brand-600);
+  --card-foreground: var(--cb-color-neutral-0);
+
+  --popover:            var(--cb-color-brand-700);
+  --popover-foreground: var(--cb-color-neutral-0);
+
+  --primary:            var(--cb-color-lime-500);
+  --primary-foreground: var(--cb-color-brand-500);
+
+  --secondary:            var(--cb-color-accent-500);
+  --secondary-foreground: var(--cb-color-brand-500);
+
+  --muted:            var(--cb-color-brand-700);
+  --muted-foreground: var(--cb-color-neutral-400);
+
+  --accent:            var(--cb-color-accent-500);
+  --accent-foreground: var(--cb-color-brand-500);
+
+  --destructive: var(--cb-color-danger-500);
 
   --border: rgba(255, 255, 255, 0.15);
-  --input:  rgba(7, 28, 58, 0.15);
-  --ring:   #00C8FF;
+  --input:  rgba(0, 33, 71, 0.15);
+  --ring:   var(--cb-color-accent-500);
 
-  /* Base radius — buttons/inputs get pill via override */
   --radius: 1rem;
 
-  /* Charts */
-  --chart-1: #C8FF00;
-  --chart-2: #00C8FF;
-  --chart-3: #CCF8FF;
-  --chart-4: #0D2850;
-  --chart-5: #071C3A;
-
   /* Sidebar */
-  --sidebar: #0D2850;
-  --sidebar-foreground: #FFFFFF;
-  --sidebar-primary: #C8FF00;
-  --sidebar-primary-foreground: #071C3A;
-  --sidebar-accent: #071C3A;
-  --sidebar-accent-foreground: #FFFFFF;
-  --sidebar-border: rgba(255, 255, 255, 0.1);
-  --sidebar-ring: #00C8FF;
+  --sidebar:                   var(--cb-color-brand-700);
+  --sidebar-foreground:        var(--cb-color-neutral-0);
+  --sidebar-primary:           var(--cb-color-lime-500);
+  --sidebar-primary-foreground: var(--cb-color-brand-500);
+  --sidebar-accent:            var(--cb-color-brand-500);
+  --sidebar-accent-foreground: var(--cb-color-neutral-0);
+  --sidebar-border:            rgba(255, 255, 255, 0.10);
+  --sidebar-ring:              var(--cb-color-accent-500);
+
+  /* Charts */
+  --chart-1: var(--cb-color-lime-500);
+  --chart-2: var(--cb-color-accent-500);
+  --chart-3: var(--cb-color-accent-200);
+  --chart-4: var(--cb-color-brand-700);
+  --chart-5: var(--cb-color-brand-500);
 }
 
-/* CarBrain is dark-first — .dark mirrors :root */
-.dark {
-  --background: #071C3A;
-  --foreground: #FFFFFF;
-  --card: #FFFFFF;
-  --card-foreground: #071C3A;
-  --popover: #0D2850;
-  --popover-foreground: #FFFFFF;
-  --primary: #C8FF00;
-  --primary-foreground: #071C3A;
-  --secondary: #00C8FF;
-  --secondary-foreground: #071C3A;
-  --muted: #0D2850;
-  --muted-foreground: #7FA5CC;
-  --accent: #00C8FF;
-  --accent-foreground: #071C3A;
-  --destructive: #EF4444;
-  --input-bg: #FFFFFF;
-  --input-fg: #071C3A;
-  --input-placeholder: #9BA3AF;
-  --border: rgba(255, 255, 255, 0.15);
-  --input:  rgba(7, 28, 58, 0.15);
-  --ring:   #00C8FF;
-  --chart-1: #C8FF00;
-  --chart-2: #00C8FF;
-  --chart-3: #CCF8FF;
-  --chart-4: #0D2850;
-  --chart-5: #071C3A;
-  --sidebar: #0D2850;
-  --sidebar-foreground: #FFFFFF;
-  --sidebar-primary: #C8FF00;
-  --sidebar-primary-foreground: #071C3A;
-  --sidebar-accent: #071C3A;
-  --sidebar-accent-foreground: #FFFFFF;
-  --sidebar-border: rgba(255, 255, 255, 0.1);
-  --sidebar-ring: #00C8FF;
+/* Light-theme shadcn overrides */
+:root[data-theme="light"] {
+  --background:      var(--cb-color-neutral-0);
+  --foreground:      var(--cb-color-brand-500);
+  --card:            var(--cb-color-neutral-0);
+  --card-foreground: var(--cb-color-brand-500);
+  --popover:         var(--cb-color-neutral-0);
+  --popover-foreground: var(--cb-color-brand-500);
+  --muted:           var(--cb-color-neutral-100);
+  --muted-foreground: var(--cb-color-neutral-500);
+  --border:          var(--cb-color-neutral-200);
+  --input:           var(--cb-color-neutral-200);
 }
 
-/* ─── Global base overrides ─── */
+/* ─── Mobile overrides ─── */
+@media (max-width: 767px) {
+  :root {
+    --cb-banner-hero-min-height: 480px;
+  }
+}
+
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   5. GLOBAL BASE OVERRIDES
+   ═══════════════════════════════════════════════════════════════════════════ */
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -204,35 +572,37 @@
     font-family: var(--font-paytone-one), var(--font-nunito-sans), sans-serif;
   }
 
-  /* All buttons — pill shape */
+  /* All buttons — pill shape (overrides any border-radius in component) */
   [data-slot="button"] {
     border-radius: 9999px !important;
   }
 
-  /* All input fields — always white background, navy text */
+  /* All inputs — white background with dark text */
   [data-slot="input"] {
     border-radius: 9999px;
     background-color: #FFFFFF;
-    color: #071C3A;
-    border-color: rgba(7, 28, 58, 0.2);
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
+    color: var(--cb-color-brand-500);
+    border-color: var(--cb-color-neutral-200);
+    padding-left: var(--cb-input-padding-x);
+    padding-right: var(--cb-input-padding-x);
+    min-height: var(--cb-input-min-height);
   }
 
   [data-slot="input"]::placeholder {
-    color: #9BA3AF;
+    color: var(--cb-color-neutral-400);
   }
 
   /* Select triggers — white pill */
   [data-slot="select-trigger"] {
     border-radius: 9999px;
     background-color: #FFFFFF;
-    color: #071C3A;
-    padding-left: 1.25rem;
+    color: var(--cb-color-brand-500);
+    padding-left: var(--cb-input-padding-x);
+    min-height: var(--cb-input-min-height);
   }
 
   /* Progress bar — lime fill */
   [data-slot="progress-indicator"] {
-    background-color: #C8FF00;
+    background: var(--cb-gradient-brand);
   }
 }

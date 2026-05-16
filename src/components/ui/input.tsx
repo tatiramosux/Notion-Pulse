@@ -9,7 +9,18 @@ function Input({ className, type, ...props }: React.ComponentProps<"input">) {
       type={type}
       data-slot="input"
       className={cn(
-        "h-10 w-full min-w-0 rounded-full border border-cb-navy-20 bg-white px-5 py-2 text-cb-navy-100 text-base transition-colors outline-none placeholder:text-cb-navy-40 focus-visible:border-cb-cyan-100 focus-visible:ring-3 focus-visible:ring-cb-cyan-100/30 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 md:text-sm",
+        // Sizing from component tokens: min-h 56px, px 20px, py 12px
+        "min-h-[var(--cb-input-min-height)] w-full min-w-0",
+        "rounded-full border border-[var(--cb-color-neutral-200)]",
+        // Inputs are always white with brand-500 text, regardless of surface
+        "bg-white px-[var(--cb-input-padding-x)] py-[var(--cb-input-padding-y)]",
+        "text-[var(--cb-color-brand-500)] text-[length:var(--cb-input-font-size)]",
+        "transition-colors outline-none",
+        "placeholder:text-[var(--cb-color-neutral-400)]",
+        "hover:border-[var(--cb-color-neutral-400)]",
+        "focus-visible:border-[var(--cb-color-accent-500)] focus-visible:ring-3 focus-visible:ring-[var(--cb-color-accent-500)]/20",
+        "disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50",
+        "aria-invalid:border-[var(--cb-color-danger-500)] aria-invalid:ring-3 aria-invalid:ring-[var(--cb-color-danger-500)]/20",
         className
       )}
       {...props}

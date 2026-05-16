@@ -4,12 +4,12 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  // Base — pill shape is enforced globally via [data-slot="button"] in globals.css
+  // Base — pill shape enforced globally via [data-slot="button"] in globals.css
   [
     "group/button inline-flex shrink-0 items-center justify-center",
     "rounded-full border border-transparent font-bold whitespace-nowrap",
-    "transition-all duration-150 ease-out outline-none select-none",
-    "focus-visible:ring-3 focus-visible:ring-cb-cyan-100/50 focus-visible:border-cb-cyan-100",
+    "transition-all duration-[250ms] ease-[cubic-bezier(0.2,0,0,1)] outline-none select-none",
+    "focus-visible:ring-3 focus-visible:ring-[var(--cb-border-focus)]/50 focus-visible:border-[var(--cb-border-focus)]",
     "active:not-aria-[haspopup]:translate-y-px active:not-aria-[haspopup]:scale-[0.98]",
     "disabled:pointer-events-none",
     "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
@@ -19,137 +19,95 @@ const buttonVariants = cva(
       variant: {
         /**
          * Primary — neon lime CTA.
-         * Used for: "Get an Offer Now", "Accept Your Offer!", "Next →"
-         *
-         * rest     bg-cb-lime-100   #C8FF00   navy text
-         * hover    bg-cb-lime-90    #CDFF1A
-         * active   bg-cb-lime-80    #D3FF33   + translate-y-px
-         * disabled bg-cb-lime-30   #EEFFB3   40% opacity
+         * rest:     bg lime-500   #CBFF00   brand-500 text
+         * hover:    brand gradient (Light Blue → Lime)
+         * disabled: neutral-700 bg, neutral-500 text
          */
         default: [
-          "bg-cb-lime-100 text-cb-navy-100",
-          "hover:bg-cb-lime-90",
-          "aria-expanded:bg-cb-lime-90",
-          "disabled:bg-cb-lime-30 disabled:text-cb-navy-40 disabled:opacity-100",
+          "bg-[var(--cb-interactive-brand-default)] text-[var(--cb-interactive-brand-text)]",
+          "hover:[background:var(--cb-gradient-brand)]",
+          "aria-expanded:[background:var(--cb-gradient-brand)]",
+          "disabled:bg-[var(--cb-interactive-brand-disabled)] disabled:text-[var(--cb-text-disabled)] disabled:opacity-100",
         ].join(" "),
 
         /**
-         * Secondary — electric cyan.
-         * Used for: "← Back" in step navigation.
-         *
-         * rest     bg-cb-cyan-100   #00C8FF   navy text
-         * hover    bg-cb-cyan-90    #1ADCFF
-         * active   bg-cb-cyan-80    #33E0FF   + translate-y-px
-         * disabled bg-cb-cyan-20    #CCF8FF   muted
+         * Secondary — electric light blue.
+         * rest:     accent-500  brand-500 text
+         * hover:    gradient + brand-500 text
+         * disabled: neutral bg, disabled text
          */
         secondary: [
-          "bg-cb-cyan-100 text-cb-navy-100",
-          "hover:bg-cb-cyan-90",
-          "aria-expanded:bg-cb-cyan-90",
-          "disabled:bg-cb-cyan-20 disabled:text-cb-navy-40 disabled:opacity-100",
+          "bg-[var(--cb-interactive-secondary-default)] text-[var(--cb-interactive-secondary-text)]",
+          "hover:[background:var(--cb-gradient-brand)] hover:text-[var(--cb-color-brand-500)]",
+          "aria-expanded:[background:var(--cb-gradient-brand)] aria-expanded:text-[var(--cb-color-brand-500)]",
+          "disabled:bg-[var(--cb-interactive-secondary-disabled)] disabled:text-[var(--cb-text-disabled)] disabled:opacity-100",
         ].join(" "),
 
         /**
-         * Outline — dark navy bg, white border.
-         * Used for: Yes / No option buttons on step forms.
-         *
-         * rest     bg-cb-navy-100  white border  white text
-         * hover    bg-cb-navy-80   brighter border
-         * active   bg-cb-navy-90   + translate-y-px
-         * disabled opacity-40
+         * Outline — dark brand bg, white border.
+         * Used for Yes / No option buttons on dark step forms.
          */
         outline: [
-          "border-white/30 bg-cb-navy-100 text-white",
-          "hover:border-white/70 hover:bg-cb-navy-80",
-          "aria-expanded:bg-cb-navy-80 aria-expanded:border-white/70",
+          "border-[var(--cb-border-default)] bg-[var(--cb-color-brand-500)] text-white",
+          "hover:border-[var(--cb-border-strong)] hover:bg-[var(--cb-color-brand-700)]",
+          "aria-expanded:bg-[var(--cb-color-brand-700)] aria-expanded:border-[var(--cb-border-strong)]",
           "disabled:opacity-40",
         ].join(" "),
 
         /**
-         * Ghost — invisible bg, white text.
-         * Used for: "Have your VIN number?", nav text links.
-         *
-         * rest     transparent  white text
-         * hover    white/10 overlay
-         * disabled opacity-40
+         * Ghost — transparent bg, border, ghost text.
+         * rest:     transparent, border-default, ghost-text color
+         * hover:    ghost-hover bg
+         * On dark surface: white text + white/15 border (via semantic tokens).
          */
         ghost: [
-          "text-white",
-          "hover:bg-white/10 hover:text-white",
-          "aria-expanded:bg-white/10",
+          "bg-transparent text-[var(--cb-interactive-ghost-text)]",
+          "border border-[var(--cb-border-default)]",
+          "hover:bg-[var(--cb-interactive-ghost-hover)]",
+          "aria-expanded:bg-[var(--cb-interactive-ghost-hover)]",
           "disabled:opacity-40",
         ].join(" "),
 
         /**
-         * Destructive — red bg, white text.
-         * Used for: error actions, delete confirmations.
-         *
-         * rest     bg-destructive  white text
-         * hover    bg-destructive/85
-         * disabled bg-destructive/40
+         * Destructive — danger red.
          */
         destructive: [
-          "bg-destructive text-white",
-          "hover:bg-destructive/85",
-          "focus-visible:ring-destructive/50 focus-visible:border-destructive",
-          "disabled:bg-destructive/40 disabled:opacity-100",
+          "bg-[var(--cb-interactive-danger-default)] text-[var(--cb-interactive-danger-text)]",
+          "hover:bg-[var(--cb-interactive-danger-hover)]",
+          "focus-visible:ring-[var(--cb-color-danger-500)]/50 focus-visible:border-[var(--cb-color-danger-500)]",
+          "disabled:opacity-40",
         ].join(" "),
 
         /**
-         * Link — no bg, cyan text, underline on hover.
-         * Used for: inline text links ("smarter", "Have your VIN number?").
-         *
-         * rest     transparent  cb-cyan-100 text
-         * hover    underline
+         * Link — no bg, accent text, underline on hover.
          */
         link: [
-          "text-cb-cyan-100 underline-offset-4",
-          "hover:underline hover:text-cb-cyan-90",
+          "text-[var(--cb-color-accent-500)] underline-offset-4",
+          "hover:underline hover:text-[var(--cb-color-accent-400)]",
           "disabled:opacity-40",
         ].join(" "),
       },
 
       size: {
-        /**
-         * xs — icon-adjacent actions, badges
-         * h-7  px-3  text-xs
-         */
+        /** xs — icon-adjacent actions, badges */
         xs: "h-7 gap-1 px-3 text-xs [&_svg:not([class*='size-'])]:size-3",
 
-        /**
-         * sm — Back button, secondary nav actions
-         * h-9  px-5  text-sm
-         */
-        sm: "h-9 gap-1.5 px-5 text-sm",
+        /** sm — Back button, secondary nav */
+        sm: "min-h-[var(--cb-button-sm-min-height)] gap-1.5 px-[var(--cb-button-sm-padding-x)] text-[length:var(--cb-button-sm-font-size)]",
 
-        /**
-         * default — Nav CTA ("Get an offer"), standard actions
-         * h-11  px-6  text-sm
-         */
-        default: "h-11 gap-1.5 px-6 text-sm",
+        /** default — Nav CTA, standard actions */
+        default: "min-h-[var(--cb-button-md-min-height)] gap-1.5 px-[var(--cb-button-md-padding-x)] text-[length:var(--cb-button-md-font-size)]",
 
-        /**
-         * lg — Hero CTA ("Get an Offer Now"), step Next button
-         * h-14  px-8  text-base
-         */
-        lg: "h-14 gap-2 px-8 text-base",
+        /** lg — Hero CTA, step Next button */
+        lg: "min-h-[var(--cb-button-lg-min-height)] gap-2 px-[var(--cb-button-lg-padding-x)] text-[length:var(--cb-button-lg-font-size)]",
 
-        /**
-         * icon — Square icon-only, stays rounded via globals override
-         * size-11
-         */
+        /** icon — Square icon-only */
         icon: "size-11",
 
-        /**
-         * icon-sm — Compact icon-only
-         * size-9
-         */
+        /** icon-sm — Compact icon-only */
         "icon-sm": "size-9",
 
-        /**
-         * icon-lg — Large icon-only
-         * size-14
-         */
+        /** icon-lg — Large icon-only */
         "icon-lg": "size-14",
       },
     },
