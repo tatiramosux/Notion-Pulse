@@ -1,10 +1,26 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 
-<Meta title="Notion Pulse / Introduction" />
+<Meta title="CarBrain / Introduction" />
 
-# Notion Pulse — Design System
+# CarBrain Design System
 
-Bem-vindo à biblioteca de componentes do **Notion Pulse**. Esta documentação cobre todos os componentes reutilizáveis usados na plataforma.
+Biblioteca de componentes oficial do **CarBrain** — "The Smartest Way to Sell Your Damaged Car."
+
+> Built on Next.js 15 · TypeScript · Tailwind CSS 4 · shadcn/ui · Storybook 10
+
+---
+
+## Princípios de design
+
+| Princípio | Aplicação |
+|---|---|
+| **Dark-first** | Navy profundo `#071C3A` como superfície base em toda a UI |
+| **Two-accent system** | Lime `#C8FF00` para CTAs · Cyan `#00C8FF` para headings e links |
+| **Pill everything** | Botões e inputs 100% arredondados — sem arestas |
+| **White card on dark** | Cards brancos flutuam sobre o navy — contraste máximo |
+| **Trust & urgency** | Linguagem direta, ofertas garantidas, zero haggling |
+
+---
 
 ## Stack
 
@@ -12,60 +28,71 @@ Bem-vindo à biblioteca de componentes do **Notion Pulse**. Esta documentação 
 |---|---|---|
 | Next.js | 15+ (App Router) | Framework full-stack |
 | TypeScript | strict | Tipagem |
-| Tailwind CSS | 4 | Estilização |
-| shadcn/ui | latest | Componentes base |
-| Storybook | 10 | Documentação & testes de UI |
-
-## Organização dos componentes
-
-### UI Primitivos (`src/components/ui/`)
-Componentes base do shadcn/ui — Button, Badge, Card, Input, Dialog, Tabs, Select, Table, Progress, Skeleton e mais 40+ componentes.
-
-### Paywall (`src/components/paywall/`)
-Componentes de controle de acesso baseados no plano do usuário:
-- **`TrialBanner`** — Banner de urgência mostrando dias restantes no trial
-- **`PaywallGate`** — Bloqueia conteúdo para usuários sem acesso ativo
-
-### Layout (`src/components/layout/`)
-Componentes de estrutura do dashboard:
-- **`StatCard`** — Card de métrica com suporte a trend positivo/negativo
-- **`EmptyState`** — Estado vazio padronizado com ícone, título e CTA
-
-## Sistema de planos
-
-```
-FREE  → Limites rígidos (3 propostas, 20 leads, etc.)
-TRIAL → 14 dias com acesso completo
-PRO   → Acesso ilimitado + Stripe ativo
-```
-
-A função `hasAccess(user)` determina se o usuário pode ver conteúdo protegido. O `PaywallGate` usa ela internamente.
-
-## Como usar
-
-```tsx
-import { PaywallGate } from '@/components/paywall/paywall-gate';
-
-export default function ProposalsPage({ user }) {
-  return (
-    <PaywallGate user={user} feature="orçamentos automáticos">
-      <ProposalsList />
-    </PaywallGate>
-  );
-}
-```
-
-```tsx
-import { TrialBanner } from '@/components/paywall/trial-banner';
-
-// No layout do dashboard:
-{user.plan === 'TRIAL' && <TrialBanner trialEndsAt={user.trialEndsAt} />}
-```
-
-## Temas
-
-O design system suporta modo claro e escuro via `dark` class no `html`. As variáveis CSS são definidas em `globals.css` via `@theme inline`.
+| Tailwind CSS | 4 | Tokens via CSS variables |
+| shadcn/ui | latest | Primitivos de UI |
+| Storybook | 10 | Documentação & vitest |
+| Paytone One | Google Fonts | Display headings |
+| Nunito Sans | Google Fonts | Body & UI text |
 
 ---
 
-> Esta biblioteca é gerada a partir do boilerplate [muda-fácil](https://github.com/lbrezende/muda-facil).
+## Anatomia do produto
+
+```
+Landing Page (dark navy hero)
+├── Nav — logo + links + "Get an offer" lime pill
+├── Hero — Paytone One heading cyan, lime CTA
+├── Inline form — ZIP | YEAR | MAKE | MODEL | TRIM (white pill row)
+└── CTA — "Get an Offer Now" (lime, pill, bold)
+
+Step Flow (dark navy + white card)
+├── Header bar — vehicle + zip info
+├── Step card (white surface)
+│   ├── Progress bar — lime fill, slim
+│   ├── Step X of 10 + section label (cyan)
+│   ├── Question — bold dark navy
+│   ├── Options — Yes / No (outline pill buttons)
+│   └── Navigation — Back (cyan) · Next (lime)
+└── Offer card — price in bold, "Accept Your Offer!" lime CTA
+```
+
+---
+
+## Padrões de uso
+
+### CTA primária (lime)
+```tsx
+<Button variant="default" size="lg">Get an Offer Now</Button>
+```
+
+### Botão de navegação Back (cyan)
+```tsx
+<Button variant="secondary">← Back</Button>
+```
+
+### Opções de escolha (outline)
+```tsx
+<Button variant="outline" size="lg">Yes</Button>
+<Button variant="outline" size="lg">No</Button>
+```
+
+### Step progress
+```tsx
+<div className="flex justify-between mb-2">
+  <span className="text-secondary font-bold">Step 2 of 10</span>
+  <span className="text-secondary text-sm">Ownership</span>
+</div>
+<Progress value={20} className="h-1.5" />
+```
+
+### Card branco sobre navy
+```tsx
+<Card className="bg-card text-card-foreground rounded-2xl">
+  ...
+</Card>
+```
+
+---
+
+> Brand assets: `/Downloads/CarBrain Brand Application Assets/`
+> Guidelines PDF: `CarBrain Visual Identity Guidelines 050426.pdf`

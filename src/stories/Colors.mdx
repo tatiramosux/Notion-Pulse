@@ -1,78 +1,103 @@
 import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks';
 
-<Meta title="Notion Pulse / Design Tokens / Colors" />
+<Meta title="CarBrain / Design Tokens / Colors" />
 
 # Color Tokens
 
-Todas as cores são definidas via variáveis CSS e mapeadas pelo Tailwind CSS 4. Suportam modo claro e escuro automaticamente.
+CarBrain usa um sistema de **duas cores de acento** sobre fundo navy profundo. Todas as cores são CSS variables consumidas pelo Tailwind CSS 4.
+
+---
 
 ## Paleta principal
 
 <ColorPalette>
   <ColorItem
-    title="Primary"
-    subtitle="Ação principal, CTAs, links"
-    colors={{ Primary: 'hsl(var(--primary))', 'Primary Foreground': 'hsl(var(--primary-foreground))' }}
+    title="Background — Navy"
+    subtitle="--background · #071C3A · Superfície base de toda UI"
+    colors={{ 'Navy Base': '#071C3A', 'Navy Light': '#0D2850' }}
   />
   <ColorItem
-    title="Secondary"
-    subtitle="Ação secundária, badges neutros"
-    colors={{ Secondary: 'hsl(var(--secondary))', 'Secondary Foreground': 'hsl(var(--secondary-foreground))' }}
+    title="Primary — Neon Lime"
+    subtitle="--primary · #C8FF00 · CTAs, botões principais, progress bar"
+    colors={{ 'Lime': '#C8FF00' }}
   />
   <ColorItem
-    title="Destructive"
-    subtitle="Erros, ações irreversíveis"
-    colors={{ Destructive: 'hsl(var(--destructive))' }}
+    title="Secondary — Electric Cyan"
+    subtitle="--secondary · #00C8FF · Headings, links, botão Back, step labels"
+    colors={{ 'Cyan': '#00C8FF' }}
+  />
+  <ColorItem
+    title="Light Blue Section"
+    subtitle="--color-cb-light-blue · #CCF0FF · Seções de features (How it Works)"
+    colors={{ 'Light Blue': '#CCF0FF' }}
+  />
+</ColorPalette>
+
+---
+
+## Superfícies
+
+<ColorPalette>
+  <ColorItem
+    title="Card"
+    subtitle="--card · #FFFFFF · Cards brancos flutuando sobre o navy"
+    colors={{ 'Card White': '#FFFFFF', 'Card Text': '#071C3A' }}
   />
   <ColorItem
     title="Muted"
-    subtitle="Texto secundário, backgrounds sutis"
-    colors={{ Muted: 'hsl(var(--muted))', 'Muted Foreground': 'hsl(var(--muted-foreground))' }}
-  />
-  <ColorItem
-    title="Accent"
-    subtitle="Hover states, highlights"
-    colors={{ Accent: 'hsl(var(--accent))', 'Accent Foreground': 'hsl(var(--accent-foreground))' }}
-  />
-</ColorPalette>
-
-## Surface tokens
-
-<ColorPalette>
-  <ColorItem
-    title="Background"
-    subtitle="Fundo da página"
-    colors={{ Background: 'hsl(var(--background))', Foreground: 'hsl(var(--foreground))' }}
-  />
-  <ColorItem
-    title="Card"
-    subtitle="Superfície de cards"
-    colors={{ Card: 'hsl(var(--card))', 'Card Foreground': 'hsl(var(--card-foreground))' }}
-  />
-  <ColorItem
-    title="Popover"
-    subtitle="Dropdowns, tooltips"
-    colors={{ Popover: 'hsl(var(--popover))', 'Popover Foreground': 'hsl(var(--popover-foreground))' }}
+    subtitle="--muted · #0D2850 · Superfícies secundárias, popovers, sidebar"
+    colors={{ 'Muted': '#0D2850', 'Muted Foreground': '#7FA5CC' }}
   />
   <ColorItem
     title="Border / Input"
-    subtitle="Bordas e inputs"
-    colors={{ Border: 'hsl(var(--border))', Input: 'hsl(var(--input))', Ring: 'hsl(var(--ring))' }}
+    subtitle="--border · rgba(255,255,255,0.15) · Bordas sutis em superfícies navy"
+    colors={{ 'Border on Dark': 'rgba(255,255,255,0.15)', 'Input on Card': 'rgba(7,28,58,0.15)' }}
   />
 </ColorPalette>
 
-## Chart colors
+---
+
+## Status & Feedback
 
 <ColorPalette>
   <ColorItem
-    title="Charts"
-    subtitle="Paleta para gráficos e visualizações"
+    title="Destructive"
+    subtitle="--destructive · #EF4444 · Erros, ações irreversíveis"
+    colors={{ 'Destructive': '#EF4444' }}
+  />
+  <ColorItem
+    title="Success (via lime)"
+    subtitle="Confirmações, ofertas aceitas — usa --primary lime"
+    colors={{ 'Success': '#C8FF00' }}
+  />
+</ColorPalette>
+
+---
+
+## Charts
+
+<ColorPalette>
+  <ColorItem
+    title="Chart Palette"
+    subtitle="Paleta para gráficos e visualizações de dados"
     colors={{
-      'Chart 1': 'hsl(var(--chart-1))',
-      'Chart 2': 'hsl(var(--chart-2))',
-      'Chart 3': 'hsl(var(--chart-3))',
-      'Chart 4': 'hsl(var(--chart-4))',
-      'Chart 5': 'hsl(var(--chart-5))',
+      'Chart 1 (Lime)': '#C8FF00',
+      'Chart 2 (Cyan)': '#00C8FF',
+      'Chart 3 (Light Blue)': '#CCF0FF',
+      'Chart 4 (Navy Light)': '#0D2850',
+      'Chart 5 (Navy Dark)': '#071C3A',
     }}
   />
 </ColorPalette>
+
+---
+
+## Regras de uso
+
+| Cor | Onde usar | Onde NÃO usar |
+|---|---|---|
+| **Lime `#C8FF00`** | Botão CTA principal, progress bar, preços | Texto corrido, ícones decorativos |
+| **Cyan `#00C8FF`** | Headings, links, botão Back, step indicators | Fundos de página inteiros |
+| **Navy `#071C3A`** | Fundo de página, texto em cards brancos | Texto sobre navy (sem contraste) |
+| **Branco `#FFFFFF`** | Cards, texto sobre navy, forms | Fundo de página (não é dark-first) |
+| **Light Blue `#CCF0FF`** | Seções de features (marketing), email | UI interativa, forms |

@@ -4,6 +4,7 @@ import { Badge } from './badge';
 const meta = {
   component: Badge,
   tags: ['ai-generated'],
+  parameters: { backgrounds: { default: 'carbrain-navy' } },
   argTypes: {
     variant: {
       control: 'select',
@@ -15,26 +16,28 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+/** Lime — primary plan badge / status confirmado */
 export const Default: Story = {
-  args: { children: 'Badge' },
+  args: { children: 'Guaranteed', variant: 'default' },
 };
 
+/** Cyan — step label / section label */
 export const Secondary: Story = {
-  args: { children: 'Secondary', variant: 'secondary' },
+  args: { children: 'Ownership', variant: 'secondary' },
 };
 
 export const Destructive: Story = {
-  args: { children: 'Destructive', variant: 'destructive' },
+  args: { children: 'Expired', variant: 'destructive' },
 };
 
 export const Outline: Story = {
-  args: { children: 'Outline', variant: 'outline' },
+  args: { children: 'Pending', variant: 'outline' },
 };
 
-export const Plan: Story = {
-  args: { children: 'PRO', variant: 'default' },
+export const StepLabel: Story = {
+  args: { children: 'Step 2 of 10', variant: 'secondary' },
 };
 
-export const Trial: Story = {
-  args: { children: 'TRIAL', variant: 'secondary' },
+export const SectionLabel: Story = {
+  args: { children: 'Ownership', variant: 'outline' },
 };

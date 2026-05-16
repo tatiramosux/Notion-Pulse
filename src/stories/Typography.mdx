@@ -1,60 +1,103 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 
-<Meta title="Notion Pulse / Design Tokens / Typography" />
+<Meta title="CarBrain / Design Tokens / Typography" />
 
 # Typography
 
-O Notion Pulse usa a família **Geist** (sans e mono) via Next.js Google Fonts, injetada como variáveis CSS.
+CarBrain usa duas fontes — uma display bold para impacto e uma sans arredondada para legibilidade.
 
-## Variáveis CSS
+---
 
-| Variável | Fonte | Uso |
+## Famílias
+
+| Variável CSS | Fonte | Uso |
 |---|---|---|
-| `--font-geist-sans` | Geist Sans | Textos gerais, UI |
-| `--font-geist-mono` | Geist Mono | Código, valores numéricos |
+| `--font-paytone-one` | **Paytone One** | H1, H2, H3, H4 — headlines de impacto |
+| `--font-nunito-sans` | **Nunito Sans** | Body, UI, labels, buttons, descriptions |
+| `--font-geist-mono` | Geist Mono | Código, valores técnicos |
 
-## Escala de tipografia (Tailwind)
+---
 
-<div className="space-y-4 font-sans">
-  <div>
-    <p className="text-xs text-muted-foreground mb-1">text-xs — 12px</p>
-    <p className="text-xs">Texto extra pequeno — usado em labels secundários e timestamps</p>
+## Display — Paytone One
+
+<div style={{ background: '#071C3A', padding: '2rem', borderRadius: '1rem' }}>
+  <h1 style={{ fontFamily: 'Paytone One, sans-serif', color: '#00C8FF', fontSize: '2.5rem', lineHeight: 1.1, margin: 0 }}>
+    The smartest way
+  </h1>
+  <h1 style={{ fontFamily: 'Paytone One, sans-serif', color: '#FFFFFF', fontSize: '2.5rem', lineHeight: 1.1, margin: 0 }}>
+    to sell your damaged car.
+  </h1>
+</div>
+
+```html
+<!-- Headline split: cyan first line, white second line -->
+<h1 class="font-heading text-secondary">The smartest way</h1>
+<h1 class="font-heading text-foreground">to sell your damaged car.</h1>
+```
+
+---
+
+## Body & UI — Nunito Sans
+
+<div style={{ background: '#071C3A', padding: '2rem', borderRadius: '1rem', color: '#FFFFFF', fontFamily: 'Nunito Sans, sans-serif' }}>
+  <p style={{ color: '#7FA5CC', marginBottom: '1rem' }}>
+    Stop guessing and start selling. Get an instant, guaranteed offer you can actually bank on.
+  </p>
+  <p style={{ color: '#00C8FF', fontWeight: 700 }}>
+    No haggling. No price drops. Just a <u>smarter</u> sale.
+  </p>
+</div>
+
+---
+
+## Escala tipográfica (Nunito Sans)
+
+<div style={{ background: '#071C3A', padding: '2rem', borderRadius: '1rem', color: '#FFFFFF', fontFamily: 'Nunito Sans, sans-serif' }}>
+  <div style={{ marginBottom: '1.5rem' }}>
+    <p style={{ color: '#7FA5CC', fontSize: '0.7rem', marginBottom: '0.25rem' }}>text-xs · 12px · uppercase tracking-widest · field labels</p>
+    <p style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}>ZIP CODE</p>
   </div>
-  <div>
-    <p className="text-xs text-muted-foreground mb-1">text-sm — 14px</p>
-    <p className="text-sm">Texto pequeno — corpo padrão de UI, descriptions</p>
+  <div style={{ marginBottom: '1.5rem' }}>
+    <p style={{ color: '#7FA5CC', fontSize: '0.7rem', marginBottom: '0.25rem' }}>text-sm · 14px · body / descriptions</p>
+    <p style={{ fontSize: '0.875rem' }}>Exact mileage helps us give you a more accurate offer.</p>
   </div>
-  <div>
-    <p className="text-xs text-muted-foreground mb-1">text-base — 16px</p>
-    <p className="text-base">Texto base — leitura confortável em parágrafos</p>
+  <div style={{ marginBottom: '1.5rem' }}>
+    <p style={{ color: '#7FA5CC', fontSize: '0.7rem', marginBottom: '0.25rem' }}>text-base · 16px · default body</p>
+    <p style={{ fontSize: '1rem', fontWeight: 700 }}>Do you have a clean title in your name?</p>
   </div>
-  <div>
-    <p className="text-xs text-muted-foreground mb-1">text-lg — 18px</p>
-    <p className="text-lg">Texto grande — subtítulos</p>
+  <div style={{ marginBottom: '1.5rem' }}>
+    <p style={{ color: '#7FA5CC', fontSize: '0.7rem', marginBottom: '0.25rem' }}>text-lg · 18px · step heading</p>
+    <p style={{ fontSize: '1.125rem', fontWeight: 700, color: '#00C8FF' }}>Step 2 of 10</p>
   </div>
-  <div>
-    <p className="text-xs text-muted-foreground mb-1">text-xl — 20px</p>
-    <p className="text-xl font-semibold">Extra large — títulos de seção</p>
+  <div style={{ marginBottom: '1.5rem' }}>
+    <p style={{ color: '#7FA5CC', fontSize: '0.7rem', marginBottom: '0.25rem' }}>text-xl · 20px · section heading (Nunito bold)</p>
+    <p style={{ fontSize: '1.25rem', fontWeight: 700, color: '#00C8FF' }}>First, let's get the basics down.</p>
   </div>
-  <div>
-    <p className="text-xs text-muted-foreground mb-1">text-2xl — 24px</p>
-    <p className="text-2xl font-bold">2XL — títulos de página</p>
-  </div>
-  <div>
-    <p className="text-xs text-muted-foreground mb-1">text-3xl — 30px</p>
-    <p className="text-3xl font-bold">3XL — Hero headings</p>
-  </div>
-  <div>
-    <p className="text-xs text-muted-foreground mb-1">text-4xl — 36px</p>
-    <p className="text-4xl font-bold">4XL — Landing page hero</p>
+  <div style={{ marginBottom: '1.5rem' }}>
+    <p style={{ color: '#7FA5CC', fontSize: '0.7rem', marginBottom: '0.25rem' }}>text-4xl · 36px · large price / offer value</p>
+    <p style={{ fontSize: '2.25rem', fontWeight: 900 }}>$1,500.00</p>
   </div>
 </div>
 
-## Pesos
+---
 
-<div className="space-y-2">
-  <p className="font-normal">font-normal (400) — Corpo de texto</p>
-  <p className="font-medium">font-medium (500) — Rótulos e labels</p>
-  <p className="font-semibold">font-semibold (600) — Títulos de card</p>
-  <p className="font-bold">font-bold (700) — Headings principais</p>
-</div>
+## Pesos utilizados
+
+| Peso | Uso |
+|---|---|
+| **300 Light** | Placeholders, helper text secundário |
+| **400 Regular** | Body text geral |
+| **600 SemiBold** | Labels, nav links |
+| **700 Bold** | Questions, emphasis, step labels |
+| **800 ExtraBold** | Prices, key numbers |
+| **900 Black** | Dollar amounts, offer values |
+
+---
+
+## Convenções
+
+- **Headings** (H1–H4) → sempre `font-heading` (Paytone One)
+- **Field labels** → `text-xs font-bold uppercase tracking-widest`
+- **Cyan highlight** → `text-secondary` (electric cyan) — seções "First, let's get…"
+- **White body** → `text-foreground` — perguntas e descrições
+- **Muted text** → `text-muted-foreground` — helpers e placeholders
