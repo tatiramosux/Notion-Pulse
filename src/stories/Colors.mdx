@@ -1,0 +1,78 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
+
+<Meta title="Notion Pulse / Design Tokens / Colors" />
+
+# Color Tokens
+
+Todas as cores são definidas via variáveis CSS e mapeadas pelo Tailwind CSS 4. Suportam modo claro e escuro automaticamente.
+
+## Paleta principal
+
+<ColorPalette>
+  <ColorItem
+    title="Primary"
+    subtitle="Ação principal, CTAs, links"
+    colors={{ Primary: 'hsl(var(--primary))', 'Primary Foreground': 'hsl(var(--primary-foreground))' }}
+  />
+  <ColorItem
+    title="Secondary"
+    subtitle="Ação secundária, badges neutros"
+    colors={{ Secondary: 'hsl(var(--secondary))', 'Secondary Foreground': 'hsl(var(--secondary-foreground))' }}
+  />
+  <ColorItem
+    title="Destructive"
+    subtitle="Erros, ações irreversíveis"
+    colors={{ Destructive: 'hsl(var(--destructive))' }}
+  />
+  <ColorItem
+    title="Muted"
+    subtitle="Texto secundário, backgrounds sutis"
+    colors={{ Muted: 'hsl(var(--muted))', 'Muted Foreground': 'hsl(var(--muted-foreground))' }}
+  />
+  <ColorItem
+    title="Accent"
+    subtitle="Hover states, highlights"
+    colors={{ Accent: 'hsl(var(--accent))', 'Accent Foreground': 'hsl(var(--accent-foreground))' }}
+  />
+</ColorPalette>
+
+## Surface tokens
+
+<ColorPalette>
+  <ColorItem
+    title="Background"
+    subtitle="Fundo da página"
+    colors={{ Background: 'hsl(var(--background))', Foreground: 'hsl(var(--foreground))' }}
+  />
+  <ColorItem
+    title="Card"
+    subtitle="Superfície de cards"
+    colors={{ Card: 'hsl(var(--card))', 'Card Foreground': 'hsl(var(--card-foreground))' }}
+  />
+  <ColorItem
+    title="Popover"
+    subtitle="Dropdowns, tooltips"
+    colors={{ Popover: 'hsl(var(--popover))', 'Popover Foreground': 'hsl(var(--popover-foreground))' }}
+  />
+  <ColorItem
+    title="Border / Input"
+    subtitle="Bordas e inputs"
+    colors={{ Border: 'hsl(var(--border))', Input: 'hsl(var(--input))', Ring: 'hsl(var(--ring))' }}
+  />
+</ColorPalette>
+
+## Chart colors
+
+<ColorPalette>
+  <ColorItem
+    title="Charts"
+    subtitle="Paleta para gráficos e visualizações"
+    colors={{
+      'Chart 1': 'hsl(var(--chart-1))',
+      'Chart 2': 'hsl(var(--chart-2))',
+      'Chart 3': 'hsl(var(--chart-3))',
+      'Chart 4': 'hsl(var(--chart-4))',
+      'Chart 5': 'hsl(var(--chart-5))',
+    }}
+  />
+</ColorPalette>

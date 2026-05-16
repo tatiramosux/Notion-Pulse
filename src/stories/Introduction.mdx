@@ -1,0 +1,71 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Notion Pulse / Introduction" />
+
+# Notion Pulse — Design System
+
+Bem-vindo à biblioteca de componentes do **Notion Pulse**. Esta documentação cobre todos os componentes reutilizáveis usados na plataforma.
+
+## Stack
+
+| Tecnologia | Versão | Função |
+|---|---|---|
+| Next.js | 15+ (App Router) | Framework full-stack |
+| TypeScript | strict | Tipagem |
+| Tailwind CSS | 4 | Estilização |
+| shadcn/ui | latest | Componentes base |
+| Storybook | 10 | Documentação & testes de UI |
+
+## Organização dos componentes
+
+### UI Primitivos (`src/components/ui/`)
+Componentes base do shadcn/ui — Button, Badge, Card, Input, Dialog, Tabs, Select, Table, Progress, Skeleton e mais 40+ componentes.
+
+### Paywall (`src/components/paywall/`)
+Componentes de controle de acesso baseados no plano do usuário:
+- **`TrialBanner`** — Banner de urgência mostrando dias restantes no trial
+- **`PaywallGate`** — Bloqueia conteúdo para usuários sem acesso ativo
+
+### Layout (`src/components/layout/`)
+Componentes de estrutura do dashboard:
+- **`StatCard`** — Card de métrica com suporte a trend positivo/negativo
+- **`EmptyState`** — Estado vazio padronizado com ícone, título e CTA
+
+## Sistema de planos
+
+```
+FREE  → Limites rígidos (3 propostas, 20 leads, etc.)
+TRIAL → 14 dias com acesso completo
+PRO   → Acesso ilimitado + Stripe ativo
+```
+
+A função `hasAccess(user)` determina se o usuário pode ver conteúdo protegido. O `PaywallGate` usa ela internamente.
+
+## Como usar
+
+```tsx
+import { PaywallGate } from '@/components/paywall/paywall-gate';
+
+export default function ProposalsPage({ user }) {
+  return (
+    <PaywallGate user={user} feature="orçamentos automáticos">
+      <ProposalsList />
+    </PaywallGate>
+  );
+}
+```
+
+```tsx
+import { TrialBanner } from '@/components/paywall/trial-banner';
+
+// No layout do dashboard:
+{user.plan === 'TRIAL' && <TrialBanner trialEndsAt={user.trialEndsAt} />}
+```
+
+## Temas
+
+O design system suporta modo claro e escuro via `dark` class no `html`. As variáveis CSS são definidas em `globals.css` via `@theme inline`.
+
+---
+
+> Esta biblioteca é gerada a partir do boilerplate [muda-fácil](https://github.com/lbrezende/muda-facil).
